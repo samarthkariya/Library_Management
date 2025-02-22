@@ -1,19 +1,20 @@
-// package com.library.management.config;
-// import org.springframework.context.annotation.Configuration;
+package com.library.management.config;
 
-// import springfox.documentation.builders.PathSelectors;
-// import springfox.documentation.builders.RequestHandlerSelectors;
-// import springfox.documentation.spi.DocumentationType;
-// import springfox.documentation.spring.web.plugins.Docket;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-// @Configuration
-// public class Swagger {
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 
-//    public Docket SwaggerApi() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .select()
-//                .apis(RequestHandlerSelectors.any())
-//                .paths(PathSelectors.any())
-//                .build();
-//    }
-// }
+@Configuration
+public class Swagger {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Library Management System API")
+                        .description("API documentation for the Library Management System")
+                        .version("1.0"));
+    }
+}
